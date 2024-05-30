@@ -579,21 +579,19 @@ class MainApplication(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         self.frame = None
-        self.user = None  # Initialize user as None
+        self.user = None  
         self.switch_frame(trangdangnhap)
 
     def switch_frame(self, frame_class, **kwargs):
-        # If 'user' is not in kwargs, use self.user
         user = kwargs.pop('user', self.user)
-        vi_tien_dien_thoai = kwargs.pop('vi_tien_dien_thoai', None)  # Get vi_tien_dien_thoai from kwargs
-        new_frame = frame_class(self, vi_tien_dien_thoai=vi_tien_dien_thoai, user=user, **kwargs)
+        vi_tien_dien_thoai = kwargs.pop('vi_tien_dien_thoai', None)  
+        new_frame = frame_class(self, vi_tien_dien_thoai=vi_tien_dien_thoai, user=user, **kwargs) # bọn em bị 1 bug khá khó chịu là user không được lưu sau khi đăng nhập nên phải chuyển sang lưu ở đây và lấy user[] và thông tin của vi_tien_dien_thoai[] từ đây # bọn em bị 1 bug khá khó chịu là user không được lưu sau khi đăng nhập nên phải chuyển sang lưu ở đây và lấy user[] và thông tin của vi_tien_dien_thoai[] từ đây 
         if self.frame is not None:
             self.frame.destroy()
         self.frame = new_frame
         self.frame.pack()
 
     def set_user(self, user):
-        # Method to set the user after registration
         self.user = user
 
 if __name__ == "__main__":
