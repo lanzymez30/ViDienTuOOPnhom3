@@ -585,7 +585,7 @@ class MainApplication(tk.Tk):
     def switch_frame(self, frame_class, **kwargs):
         user = kwargs.pop('user', self.user)
         vi_tien_dien_thoai = kwargs.pop('vi_tien_dien_thoai', None)  
-        new_frame = frame_class(self, vi_tien_dien_thoai=vi_tien_dien_thoai, user=user, **kwargs) # bọn em bị 1 bug khá khó chịu là user không được lưu sau khi đăng nhập nên phải chuyển sang lưu ở đây và lấy user[] và thông tin của vi_tien_dien_thoai[] từ đây # bọn em bị 1 bug khá khó chịu là user không được lưu sau khi đăng nhập nên phải chuyển sang lưu ở đây và lấy user[] và thông tin của vi_tien_dien_thoai[] từ đây 
+        new_frame = frame_class(self, vi_tien_dien_thoai=vi_tien_dien_thoai, user=user, **kwargs) # bọn em bị 1 bug là user không được lưu sau khi switch_frame nên phải chuyển sang lưu ở đây và lấy user[] và thông tin của vi_tien_dien_thoai[] từ đây 
         if self.frame is not None:
             self.frame.destroy()
         self.frame = new_frame
